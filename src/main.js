@@ -17,13 +17,11 @@ $(document).ready(function(){
       const newDoctorService = new DoctorService(userInput, locationInput);
       if ($("#typeOfSearch").val() === "Search By Name"){
         const response = await newDoctorService.callDoctorByName();
-        const newDoctorBin = new DoctorBin(response);
-        newDoctorBin.getDoctors();
-        console.log("By Name: ",response);
+        const newDoctorBin = new DoctorBin();
+        newDoctorBin.getDoctors(response);
       }
       else if ($("#typeOfSearch").val() === "Search By Condition"){
         const response = await newDoctorService.callDoctorByCondition();
-        console.log("By Condition:",response);
       }
       // getElements(response);
     })();
