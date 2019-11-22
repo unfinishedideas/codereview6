@@ -15,8 +15,14 @@ $(document).ready(function(){
     const locationInput = state + "-" + city;
     (async () => {
       const newDoctorService = new DoctorService(userInput, locationInput);
-      const response = await newDoctorService.callDoctor();
-      console.log(response);
+      if ($("#typeOfSearch").val() === "Search By Name"){
+        const response = await newDoctorService.callDoctorByName();
+        console.log("By Name: ",response);
+      }
+      else if ($("#typeOfSearch").val() === "Search By Condition"){
+        const response = await newDoctorService.callDoctorByCondition();
+        console.log("By Condition:",response);
+      }
       // getElements(response);
     })();
   });
