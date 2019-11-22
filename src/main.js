@@ -3,7 +3,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import { DoctorService } from './calldoctor.js';
-import { Doctor } from './doctor.js';
+import { DoctorBin, Doctor } from './doctorbin.js';
 
 $(document).ready(function(){
 
@@ -17,6 +17,8 @@ $(document).ready(function(){
       const newDoctorService = new DoctorService(userInput, locationInput);
       if ($("#typeOfSearch").val() === "Search By Name"){
         const response = await newDoctorService.callDoctorByName();
+        const newDoctorBin = new DoctorBin(response);
+        newDoctorBin.getDoctors();
         console.log("By Name: ",response);
       }
       else if ($("#typeOfSearch").val() === "Search By Condition"){
