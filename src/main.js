@@ -11,10 +11,10 @@ $(document).ready(function(){
     event.preventDefault();
     const userInput = $("#searchQuery").val();
     (async () => {
-      let newDoctorService = new DoctorService(userInput);
+      const newDoctorService = new DoctorService(userInput);
       const response = await newDoctorService.callDoctor();
-      // getElements(response);
       console.log(response);
+      // getElements(response);
     })();
   });
 

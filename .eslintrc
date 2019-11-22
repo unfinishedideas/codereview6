@@ -4,10 +4,14 @@
     "sourceType": "module"
     },
     "extends": "eslint:recommended",
+    "globals": {
+      "process": true
+      },
     "env": {
+      "node": true,
       "es6": true,
       "browser": true,
-      "jquery": true
+      "jquery": true,
       },
       "rules": {
         "semi": 1,
