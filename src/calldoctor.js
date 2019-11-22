@@ -1,3 +1,5 @@
+// This is the API Call for BetterDoctor
+
 export class DoctorService {
   constructor (query, location){
     this.query = query;
