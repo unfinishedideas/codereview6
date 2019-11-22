@@ -33,9 +33,13 @@ $(document).ready(function(){
     $("#doctorList").html("");
     doctorArray.forEach(function(doctor){
       $("#doctorList").append(`<li><h4>${doctor.firstName}, ${doctor.lastName}</h4>`);
-      $("#doctorList").append(`<h3>Address: ${doctor.address}</h3>`);
-      $("#doctorList").append(`<h4>Phone: ${doctor.phone}</h4>`);
-      $("#doctorList").append(`<h4>Accepting New Patients? ${doctor.acceptingNew}</h4>`);
+      doctor.practicesList.forEach(function(practice){
+        $("#doctorList").append(`<h3>Practice Name: ${practice.practiceName}</h3>`);        
+        $("#doctorList").append(`<h3>Address: ${practice.address}</h3>`);
+        $("#doctorList").append(`<h4>Phone: ${practice.phone}</h4>`);
+        $("#doctorList").append(`<h4>Accepting New Patients? ${practice.acceptingNew}</h4>`);\
+      });
+
       $("#doctorList").append(`</li>`);
     });
   };
