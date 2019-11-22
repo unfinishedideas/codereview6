@@ -10,3 +10,13 @@ body {
   background-color: rgba(60, 60, 120, 1);
   color: white;
 }
+li {
+  margin-bottom: 75px;
+}
+
+.greenText {
+  color: rgba(0, 255, 0, 1);
+}
+.redText {
+  color: rgba(255, 0, 0, 1);
+}

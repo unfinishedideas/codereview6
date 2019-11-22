@@ -4,7 +4,6 @@ export class DoctorBin {
   }
   getDoctors(response){
     const doctorArray = response.data;
-    console.log(response);
     doctorArray.forEach((doctor) => {
       const firstName = doctor.profile.first_name;
       const middleName = doctor.profile.middle_name;
@@ -14,6 +13,7 @@ export class DoctorBin {
       this.doctorList.push(newDr);
     });
     console.log("Dr List!!!", this.doctorList);
+    return this.doctorList;
   }
   // Get Info for Each Practice
   getPractices(doctor){
@@ -26,10 +26,11 @@ export class DoctorBin {
       const phone = practice.phones[0].number;
       const street1 = practice.visit_address.street;
       const street2 = practice.visit_address.street2;
+      const city = practice.visit_address.city;
       const state = practice.visit_address.state;
       const zip = practice.visit_address.zip;
 
-      const address = street1 + ", " + street2 + ", " + state + ", " + zip;
+      const address = street1 + ", " + street2 + ", " + city + ", " + state + ", " + zip;
       const newPractice = new Practice(name, address, phone, accepting);
       practiceArray.push(newPractice);
     });
