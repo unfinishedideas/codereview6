@@ -20,3 +20,10 @@ li {
 .redText {
   color: rgba(255, 0, 0, 1);
 }
+
+.drName {
+  color: rgba(100,255,255,1);
+}
+.practiceName {
+  color: rgba(100,255,100,1);
+}

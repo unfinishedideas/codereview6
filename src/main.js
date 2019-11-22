@@ -3,7 +3,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import { DoctorService } from './calldoctor.js';
-import { DoctorBin, Doctor } from './doctorbin.js';
+import { DoctorBin } from './doctorbin.js';
 
 $(document).ready(function(){
 
@@ -23,6 +23,9 @@ $(document).ready(function(){
       }
       else if ($("#typeOfSearch").val() === "Search By Condition"){
         const response = await newDoctorService.callDoctorByCondition();
+        const newDoctorBin = new DoctorBin();
+        const doctorArray = newDoctorBin.getDoctors(response);
+        displayDocs(doctorArray);
       }
     })();
   });
@@ -35,7 +38,7 @@ $(document).ready(function(){
 
     doctorArray.forEach(function(doctor){
       doctor.practices.forEach(function(practice){
-        practiceDisplayHtml += `<h4>Name: ${practice.name}</h4><h4>Address: ${practice.address}</h5><h5>Phone: ${practice.phone}</h5>`;
+        practiceDisplayHtml += `<h4 class="practiceName">${practice.name}</h4><h5>Phone: ${practice.phone}</h5><h5>Address: ${practice.address}</h5>`;
         if (practice.accepting === true){
           practiceDisplayHtml += `<h5>Accepting New Patients? <span class="greenText">Yes</span></h5>`;
         }
@@ -44,7 +47,7 @@ $(document).ready(function(){
         }
       });
 
-      htmlToInject += `<li><div class="drBox"><h3>Dr. ${doctor.firstName}, ${doctor.lastName}</h3><h4>Practices:</h4></div>` + practiceDisplayHtml + `</li>`;
+      htmlToInject += `<li><div class="drBox"><h3 class="drName">Dr. ${doctor.firstName}, ${doctor.lastName}</h3>` + practiceDisplayHtml + `</div></li>`;
       practiceDisplayHtml = "";
     });
     $("#doctorList").append(htmlToInject);
