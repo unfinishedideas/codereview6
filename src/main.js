@@ -10,8 +10,11 @@ $(document).ready(function(){
   $(".formBox").submit(function(event){
     event.preventDefault();
     const userInput = $("#searchQuery").val();
+    const city = $("#citySearch").val().toLowerCase();
+    const state = $("#stateSearch").val().toLowerCase();
+    const locationInput = state + "-" + city;
     (async () => {
-      const newDoctorService = new DoctorService(userInput);
+      const newDoctorService = new DoctorService(userInput, locationInput);
       const response = await newDoctorService.callDoctor();
       console.log(response);
       // getElements(response);
