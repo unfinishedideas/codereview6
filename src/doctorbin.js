@@ -6,7 +6,6 @@ export class DoctorBin {
     this.doctorList = [];
   }
   getDoctors(response){
-    console.log(response);
     const doctorArray = response.data;
     doctorArray.forEach((doctor) => {
       const firstName = doctor.profile.first_name;

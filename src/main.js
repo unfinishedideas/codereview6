@@ -13,21 +13,31 @@ $(document).ready(function(){
     const city = $("#citySearch").val().toLowerCase();
     const state = $("#stateSearch").val().toLowerCase();
     const locationInput = state + "-" + city;
+
     (async () => {
       const newDoctorService = new DoctorService(userInput, locationInput);
       if ($("#typeOfSearch").val() === "Search By Name"){
         const response = await newDoctorService.callDoctorByName();
+        console.log(response);
+        if (response === "HEY"){
+          console.log("FUCK YOU");
+        }
+        else {
         const newDoctorBin = new DoctorBin();
         const doctorArray = newDoctorBin.getDoctors(response);
         displayDocs(doctorArray);
       }
-      else if ($("#typeOfSearch").val() === "Search By Condition"){
-        const response = await newDoctorService.callDoctorByCondition();
-        const newDoctorBin = new DoctorBin();
-        const doctorArray = newDoctorBin.getDoctors(response);
-        displayDocs(doctorArray);
       }
+
+      // else if ($("#typeOfSearch").val() === "Search By Condition"){
+      //   const response = await newDoctorService.callDoctorByCondition();
+      //   const newDoctorBin = new DoctorBin();
+      //   const doctorArray = newDoctorBin.getDoctors(response);
+      //   displayDocs(doctorArray);
+      // }
     })();
+
+
   });
 
   // Take the information gathered and display it on the screen
