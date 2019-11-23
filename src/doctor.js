@@ -7,20 +7,19 @@ export class Doctor {
   }
   // Checks for duplicate practices and returns an array without those
   vetPractices(){
-    // let finalArray = [];
-    // let practicesArray = this.practices;
-    //
-    // for(let i = 0; i<practicesArray.length; i++){
-    //   let previousPractice = practicesArray[i-1];
-    //   console.log(previousPractice);
-    //   if(practicesArray[i].address !== previousPractice.address){
-    //     finalArray.push(practicesArray[i])
-    //     previousPractice === practicesArray[i];
-    //     i++;
-    //   }
-    // }
-    // console.log("FinalArray", finalArray);
-    // return finalArray;
+    let finalArray = [];
+    let practicesArray = this.practices;
+    let previousPractice = practicesArray[0];
+    finalArray.push(previousPractice);
+
+    for(let i = 1; i < practicesArray.length; i++){
+      if(practicesArray[i].address !== previousPractice.address){
+        finalArray.push(practicesArray[i])
+        previousPractice === practicesArray[i];
+      }
+    }
+    console.log("FinalArray", finalArray);
+    this.practices = finalArray;
   }
   // still needs to be written
   parsePhone(){

@@ -18,7 +18,6 @@ export class DoctorBin {
       //   newDr.practices = newDr.vetPractices();
       // }
       // newDr.phone = newDr.parsePhone();
-      console.log(`Practices for ${newDr.firstName}: ${newDr.practices}`);
       this.doctorList.push(newDr);
     });
     console.log("Dr List!!!", this.doctorList);
