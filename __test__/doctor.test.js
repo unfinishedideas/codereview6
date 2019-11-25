@@ -22,9 +22,6 @@ describe('Doctor', () => {
     newDoctor.vetPractices();
   });
 
-  // afterEach(function() {
-  // });
-
   test('vetPractices() should detect duplicate addresses for practices and remove them', () => {
     expect(newDoctor.practices.length).toEqual(3);
   });
