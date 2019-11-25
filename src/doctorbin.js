@@ -13,9 +13,9 @@ export class DoctorBin {
       const lastName = doctor.profile.last_name;
       const practices = this.getPractices(doctor);
       const newDr = new Doctor(firstName, middleName, lastName, practices);
-      // if (newDr.practices.length > 1){
-      //   newDr.practices = newDr.vetPractices();
-      // }
+      if (newDr.practices.length > 1){
+        newDr.practices = newDr.vetPractices();
+      }
       // newDr.phone = newDr.parsePhone();
       this.doctorList.push(newDr);
     });

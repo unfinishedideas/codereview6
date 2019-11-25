@@ -19,15 +19,11 @@ $(document).ready(function(){
       if ($("#typeOfSearch").val() === "Search By Name"){
         const response = await newDoctorService.callDoctorByName();
         console.log(response);
-        if (response === "HEY"){
-          console.log("FUCK YOU");
-        }
-        else {
         const newDoctorBin = new DoctorBin();
         const doctorArray = newDoctorBin.getDoctors(response);
         displayDocs(doctorArray);
       }
-      }
+
 
       // else if ($("#typeOfSearch").val() === "Search By Condition"){
       //   const response = await newDoctorService.callDoctorByCondition();
