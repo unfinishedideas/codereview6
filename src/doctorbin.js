@@ -35,9 +35,10 @@ export class DoctorBin {
       const city = practice.visit_address.city;
       const state = practice.visit_address.state;
       const zip = practice.visit_address.zip;
-
+      const website = practice.website;
+      console.log(website);
       const address = street1 + ", " + city + ", " + state + ", " + zip;
-      const newPractice = new Practice(name, address, phone, accepting);
+      const newPractice = new Practice(name, address, phone, accepting, website);
       practiceArray.push(newPractice);
     });
     return practiceArray;

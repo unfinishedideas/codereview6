@@ -53,6 +53,9 @@ $(document).ready(function(){
     doctorArray.forEach(function(doctor){
       doctor.practices.forEach(function(practice){
         practiceDisplayHtml += `<h4 class="practiceName">${practice.name}</h4><h5>Phone: ${practice.phone}</h5><h5>Address: ${practice.address}</h5>`;
+        if (practice.website !== undefined){
+          practiceDisplayHtml += `<h5><a href="${practice.website}">${practice.website}</a></h5>`;
+        }
         if (practice.accepting === true){
           practiceDisplayHtml += `<h5>Accepting New Patients? <span class="greenText">Yes</span></h5>`;
         }
