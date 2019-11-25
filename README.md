@@ -1,7 +1,7 @@
 # 1-800-Doctorb (CodeReview6)
 #### This was made as an exercise in querying a remote API and returning the results
 #### Created by Peter Wells
- _Updated: 11/22/19_
+ _Updated: 11/24/19_
 
 ## Description
 
@@ -18,11 +18,12 @@
 
 ## Known Bugs
 
-None at present
+No major bugs at present
+
+Minor thing: Having a selector switch for condition / doctor name is kind of redundant since both can be searched using the query functionality.
 
 ## Behavior Tree
-
-App will take in a user's age and calculate how old they are on different planets.
+User inserts their location, query and whether or not they are searching by condition and it returns a list of doctors in that area which are relevant.
 
 | Behavior      | Input        | Output  |
 | ------------- |:-------------| :-----  |
