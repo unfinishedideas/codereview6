@@ -19,9 +19,17 @@ $(document).ready(function(){
       if ($("#typeOfSearch").val() === "Search By Name"){
         const response = await newDoctorService.callDoctorByName();
         console.log(response);
-        const newDoctorBin = new DoctorBin();
-        const doctorArray = newDoctorBin.getDoctors(response);
-        displayDocs(doctorArray);
+        if (response.data === undefined){
+          console.error("Something went wrong: ", response);
+        }
+        else if (response.data.length === 0){
+          console.log("Empty Array");
+        }
+        else {
+          const newDoctorBin = new DoctorBin();
+          const doctorArray = newDoctorBin.getDoctors(response);
+          displayDocs(doctorArray);
+        }
       }
 
 
