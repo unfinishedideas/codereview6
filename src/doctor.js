@@ -14,11 +14,10 @@ export class Doctor {
 
     for(let i = 1; i < practicesArray.length; i++){
       if(practicesArray[i].address !== previousPractice.address){
-        finalArray.push(practicesArray[i])
+        finalArray.push(practicesArray[i]);
         previousPractice = practicesArray[i];
       }
     }
-    // console.log("FinalArray", finalArray);
     this.practices = finalArray;
     return finalArray;
   }

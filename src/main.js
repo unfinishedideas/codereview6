@@ -43,13 +43,13 @@ $(document).ready(function(){
     $("#doctorList").html("");
     $("#errorDump").text(error.message);
     $("#errorDisplay").show();
-  }
+  };
 
   // Tells the user if their search terms came up emtpy
   let noResults = () => {
     $("#doctorList").html("");
     $("#noResultsDisplay").show();
-  }
+  };
 
   // Take the information gathered and display it on the screen
   let displayDocs = (doctorArray) => {

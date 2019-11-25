@@ -5,6 +5,7 @@ export class DoctorBin {
   constructor(){
     this.doctorList = [];
   }
+  // Collect all the doctors, get their practices and place them in an array
   getDoctors(response){
     const doctorArray = response.data;
     doctorArray.forEach((doctor) => {
@@ -18,9 +19,9 @@ export class DoctorBin {
       }
       this.doctorList.push(newDr);
     });
-    // console.log("Dr List!!!", this.doctorList);
     return this.doctorList;
   }
+
   // Get Info for Each Practice
   getPractices(doctor){
     let practiceArray = [];
