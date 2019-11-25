@@ -27,3 +27,9 @@ li {
 .practiceName {
   color: rgba(100,255,100,1);
 }
+#errorDisplay {
+  display:none;
+}
+#noResultsDisplay {
+  display:none;
+}

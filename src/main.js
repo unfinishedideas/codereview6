@@ -9,6 +9,8 @@ $(document).ready(function(){
 
   $(".formBox").submit(function(event){
     event.preventDefault();
+    $("#errorDisplay").hide();
+    $("#noResultsDisplay").hide();
     const userInput = $("#searchQuery").val();
     const city = $("#citySearch").val().toLowerCase();
     const state = $("#stateSearch").val().toLowerCase();
@@ -16,39 +18,38 @@ $(document).ready(function(){
 
     (async () => {
       const newDoctorService = new DoctorService(userInput, locationInput);
+      let response;
       if ($("#typeOfSearch").val() === "Search By Name"){
-        const response = await newDoctorService.callDoctorByName();
-        if (response.data === undefined){
-          console.error("Something went wrong: ", response);
-        }
-        else if (response.data.length === 0){
-          console.log("Empty Array");
-        }
-        else {
-          const newDoctorBin = new DoctorBin();
-          const doctorArray = newDoctorBin.getDoctors(response);
-          displayDocs(doctorArray);
-        }
+        response = await newDoctorService.callDoctorByName();
+      } else if ($("#typeOfSearch").val() === "Search By Condition"){
+        response = await newDoctorService.callDoctorByCondition();
       }
-
-
-      // else if ($("#typeOfSearch").val() === "Search By Condition"){
-      //   const response = await newDoctorService.callDoctorByCondition();
-      //   const newDoctorBin = new DoctorBin();
-      //   const doctorArray = newDoctorBin.getDoctors(response);
-      //   displayDocs(doctorArray);
-      // }
+      if (response.data === undefined){
+        displayError(response);
+      }
+      else if (response.data.length === 0){
+        noResults();
+      }
+      else {
+        const newDoctorBin = new DoctorBin();
+        const doctorArray = newDoctorBin.getDoctors(response);
+        displayDocs(doctorArray);
+      }
     })();
-
-
   });
 
-  // Shows the user if their search terms came up emtpy
+  // Displays an error on the screen if the something went wrong
   let displayError = (error) => {
     $("#doctorList").html("");
-    
+    $("#errorDump").text(error.message);
+    $("#errorDisplay").show();
   }
 
+  // Tells the user if their search terms came up emtpy
+  let noResults = () => {
+    $("#doctorList").html("");
+    $("#noResultsDisplay").show();
+  }
 
   // Take the information gathered and display it on the screen
   let displayDocs = (doctorArray) => {
