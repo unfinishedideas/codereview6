@@ -13,6 +13,7 @@ export class DoctorService {
         }
         else {
           let jsonifiedResponse = await response.json();
+          console.log(jsonifiedResponse);
           return jsonifiedResponse;
         }
       } catch (error) {

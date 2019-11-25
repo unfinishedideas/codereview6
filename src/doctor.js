@@ -22,9 +22,4 @@ export class Doctor {
     this.practices = finalArray;
     return finalArray;
   }
-  // still needs to be written
-  parsePhone(){
-    let newPhone = this.number;
-    return newPhone;
-  }
 }

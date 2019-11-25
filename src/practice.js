@@ -6,4 +6,11 @@ export class Practice {
     this.accepting = accepting;
     this.website = website;
   }
+  parsePhone(){
+    let newPhone = this.phone.split("");
+    newPhone.splice(0, 0, '(');
+    newPhone.splice(4, 0, ') ');
+    newPhone.splice(8, 0, '-');
+    return newPhone.join('');
+  }
 }

@@ -18,7 +18,6 @@ $(document).ready(function(){
       const newDoctorService = new DoctorService(userInput, locationInput);
       if ($("#typeOfSearch").val() === "Search By Name"){
         const response = await newDoctorService.callDoctorByName();
-        console.log(response);
         if (response.data === undefined){
           console.error("Something went wrong: ", response);
         }
@@ -44,6 +43,13 @@ $(document).ready(function(){
 
   });
 
+  // Shows the user if their search terms came up emtpy
+  let displayError = (error) => {
+    $("#doctorList").html("");
+    
+  }
+
+
   // Take the information gathered and display it on the screen
   let displayDocs = (doctorArray) => {
     $("#doctorList").html("");
@@ -54,7 +60,7 @@ $(document).ready(function(){
       doctor.practices.forEach(function(practice){
         practiceDisplayHtml += `<h4 class="practiceName">${practice.name}</h4><h5>Phone: ${practice.phone}</h5><h5>Address: ${practice.address}</h5>`;
         if (practice.website !== undefined){
-          practiceDisplayHtml += `<h5><a href="${practice.website}">${practice.website}</a></h5>`;
+          practiceDisplayHtml += `<h5><a href="${practice.website}" target="_blank">${practice.website}</a></h5>`;
         }
         if (practice.accepting === true){
           practiceDisplayHtml += `<h5>Accepting New Patients? <span class="greenText">Yes</span></h5>`;

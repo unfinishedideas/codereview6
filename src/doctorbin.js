@@ -16,10 +16,9 @@ export class DoctorBin {
       if (newDr.practices.length > 1){
         newDr.practices = newDr.vetPractices();
       }
-      // newDr.phone = newDr.parsePhone();
       this.doctorList.push(newDr);
     });
-    console.log("Dr List!!!", this.doctorList);
+    // console.log("Dr List!!!", this.doctorList);
     return this.doctorList;
   }
   // Get Info for Each Practice
@@ -29,16 +28,16 @@ export class DoctorBin {
     doctor.practices.forEach(function(practice){
       const accepting = practice.accepts_new_patients;
 
+      let phone = practice.phones[0].number;
       const name = practice.name;
-      const phone = practice.phones[0].number;
       const street1 = practice.visit_address.street;
       const city = practice.visit_address.city;
       const state = practice.visit_address.state;
       const zip = practice.visit_address.zip;
       const website = practice.website;
-      console.log(website);
       const address = street1 + ", " + city + ", " + state + ", " + zip;
       const newPractice = new Practice(name, address, phone, accepting, website);
+      newPractice.phone = newPractice.parsePhone();
       practiceArray.push(newPractice);
     });
     return practiceArray;
